@@ -10,6 +10,9 @@ df = pd.DataFrame({
 })
 
 app = dash.Dash(__name__)
+# Dash app layout and callbacks...
+server = app.server  # This exposes the server attribute for Gunicorn
+
 
 app.layout = html.Div([
     html.H1("Plotly Dash Dashboard"),
