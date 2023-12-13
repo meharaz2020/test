@@ -2,4 +2,6 @@ dash
 plotly
 pandas
 openpyxl
+gspread
+oauth2client
 gunicorn
