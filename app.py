@@ -14,10 +14,10 @@ amount_per_package = df.groupby('Package Name')['Price'].sum().reset_index()
 
 # Initializing the Dash app
 app = dash.Dash(__name__)
-#server = app.server
+server = app.server
 # Creating layout for the dashboard
 app.layout = html.Div([
-    html.H1("Dashboard For Candidate Monitization"),
+    html.H1("Dashboard For Candidate Monetization", style={'textAlign': 'center'}),
     
     html.Div([
         dcc.Graph(figure=px.pie(amount_per_package, values='Price', names='Package Name', title='Total Amount per Package Name'))
@@ -31,8 +31,9 @@ app.layout = html.Div([
         dcc.Graph(figure=px.bar(grouped_df, x='Payment Status', y='Count', color='SEX',
                                  title='Payment Type Wise Gender Distribution',
                                  labels={'Payment Status': 'Payment Type', 'Count': 'Count of Gender'}))
-    ], style={'width': '40%', 'display': 'inline-block'})
-])
+    ], style={'width': '40%', 'display': 'inline-block'}),
+    
+], style={'textAlign': 'center'})  # Center-align all content within the main Div
 
 # Running the app
 if __name__ == '__main__':
