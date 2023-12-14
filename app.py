@@ -8,13 +8,6 @@ url = 'https://raw.githubusercontent.com/meharaz2020/ex/master/CM.xlsx'
 
 # Read Excel file from the URL
 df = pd.read_excel(url)
-
-
-# Initialize the Dash app
-app = dash.Dash(__name__)
-server = app.server
-
-
 # Calculate CM day wise subscriptions
 df['Purchase Date'] = pd.to_datetime(df['Purchase Date'])
 # Calculate total earnings where Payment Status is 'S'
@@ -22,6 +15,12 @@ total_earnings = df[df['Payment Status'] == 'S']['Price'].sum()
 
 # Format the total earnings to include only the BDT symbol
 total_earnings_formatted = f"৳{total_earnings:,.0f}"  # Assuming 'total_earnings' is in integer format
+
+
+# Initialize the Dash app
+app = dash.Dash(__name__)
+server = app.server
+
 
 # Layout for the dashboard
 app.layout = html.Div([
